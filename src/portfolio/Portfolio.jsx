@@ -5,7 +5,7 @@ import {
   Button,
   Container,
   CssBaseline,
-  Divider,
+  Card,
   Grid,
   Link,
   Switch,
@@ -14,6 +14,9 @@ import {
   ThemeProvider
 } from '@mui/material';
 import profileImage from '../assets/my.jpg';
+import GoogleSvg from '../assets/google.svg';
+import GitHubSvg from '../assets/github.svg';
+import LinkedInSvg from '../assets/linkedin.svg';
 
 const Portfolio = () => {
   const [mode, setMode] = useState('light');
@@ -63,21 +66,43 @@ const Portfolio = () => {
               Frontend Developer
             </Typography>
           </Box>
-          <Box display="flex" alignItems="center" gap={2} flexWrap="wrap">
-            {['Resume', 'Research', 'Outreach', 'Personal'].map((item, index) => (
-              <React.Fragment key={item}>
-                {index !== 0 && <Typography>|</Typography>}
-                <Link href={`#${item.toLowerCase()}`} underline="hover" sx={{ color: 'text.primary' }}>
-                  {item}
-                </Link>
-              </React.Fragment>
-            ))}
-            <Switch
-              checked={mode === 'dark'}
-              onChange={handleThemeToggle}
-              inputProps={{ 'aria-label': 'theme toggle' }}
-            />
-          </Box>
+         <Box display="flex" alignItems="center" gap={2} flexWrap="wrap">
+  {['Home', 'Resume', 'Research', 'Outreach', 'Personal'].map((item, index) => (
+    <React.Fragment key={item}>
+      {index !== 0 && <Typography color="text.secondary">|</Typography>}
+      <Link
+        href={`#${item.toLowerCase()}`}
+        underline="none"
+        sx={{
+          color: 'text.primary',
+          position: 'relative',
+          '&::after': {
+            content: '""',
+            position: 'absolute',
+            width: '0%',
+            height: '2px',
+            bottom: 0,
+            left: '50%',
+            backgroundColor: 'primary.main',
+            transition: 'all 0.3s ease-out',
+            transform: 'translateX(-50%)',
+          },
+          '&:hover::after': {
+            width: '50%', // Adjust width to your liking
+          },
+        }}
+      >
+        {item}
+      </Link>
+    </React.Fragment>
+  ))}
+  <Switch
+    checked={mode === 'dark'}
+    onChange={handleThemeToggle}
+    inputProps={{ 'aria-label': 'theme toggle' }}
+  />
+</Box>
+
         </Box>
 
         {/* Main Section */}
@@ -103,6 +128,34 @@ const Portfolio = () => {
               <Typography variant="body1" color="text.secondary" mt={2}>
                 I love exploring new technologies and continuously improving my skills to deliver the best user experience.
               </Typography>
+              <Box mt={2} display="flex" justifyContent="center" gap={2}>
+                <Card sx={{ mt: 2, p: 2, backgroundColor: 'background.default' }}>
+              <Link
+                href="https://mail.google.com/mail/u/0/#inbox?compose=new"
+                target="_blank"
+                rel="noopener noreferrer">
+                <img src={GoogleSvg} alt="Gmail Icon" style={{ width: '30px', verticalAlign: 'middle' }} />
+              </Link>
+              </Card>
+              <Card sx={{ mt: 2, p: 2, backgroundColor: 'background.default' }}>
+              <Link
+                href="https://github.com/lalithganeshchalla"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src={GitHubSvg} alt="GitHub Icon" style={{ width: '30px', verticalAlign: 'middle' }} />
+              </Link>
+                </Card>
+                <Card sx={{ mt: 2, p: 2, backgroundColor: 'background.default' }}>
+                 <Link
+                href="https://www.linkedin.com/in/challa-lalith-ganesh"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src={LinkedInSvg} alt="LinkedIn Icon" style={{ width: '30px', verticalAlign: 'middle' }} />
+              </Link>
+                </Card>
+              </Box>
             </Box>
           </Grid>
         </Grid>
@@ -136,47 +189,6 @@ const Portfolio = () => {
             ))}
           </Grid>
         </Box>
-
-        {/* Footer */}
-        <Divider sx={{ my: 6 }} />
-        <Grid container spacing={3} justifyContent="space-between" alignItems="center">
-          <Grid item xs={12} md={4}>
-            <Typography variant="body2" textAlign="center">
-              Email:{' '}
-              <Link
-                href="https://mail.google.com/mail/u/0/#inbox?compose=new"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                challalalithganesh@gmail.com
-              </Link>
-            </Typography>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <Typography variant="body2" textAlign="center">
-              GitHub:{' '}
-              <Link
-                href="https://github.com/lalithganeshchalla"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                github.com/lalithganeshchalla
-              </Link>
-            </Typography>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <Typography variant="body2" textAlign="center">
-              LinkedIn:{' '}
-              <Link
-                href="https://www.linkedin.com/in/challa-lalith-ganesh"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                linkedin.com/in/challa-lalith-ganesh
-              </Link>
-            </Typography>
-          </Grid>
-        </Grid>
       </Container>
     </ThemeProvider>
   );
