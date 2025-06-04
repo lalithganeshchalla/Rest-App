@@ -100,10 +100,7 @@ const Portfolio = () => {
               <Typography variant="body1" color="text.secondary">
                 I am a passionate frontend developer with a keen interest in creating intuitive and dynamic user interfaces.
               </Typography>
-              <Typography variant="body1" color="text.secondary" mt={2}>
-                I love exploring new technologies and continuously improving my skills to deliver the best user experience.
-              </Typography>
-            </Box>
+              </Box>
           </Grid>
         </Grid>
 
