@@ -139,7 +139,7 @@ const Portfolio = () => {
 
         {/* Footer */}
         <Divider sx={{ my: 6 }} />
-        <Grid container spacing={3} justifyContent="center">
+        <Grid container spacing={3} justifyContent="space-between" alignItems="center">
           <Grid item xs={12} md={4}>
             <Typography variant="body2" textAlign="center">
               Email:{' '}
