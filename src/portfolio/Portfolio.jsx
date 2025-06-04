@@ -25,14 +25,12 @@ const Portfolio = () => {
           mode,
           ...(mode === 'light'
             ? {
-                background: {
-                  default: '#f5f5f5'
-                }
+                background: { default: '#f5f5f5' },
+                text: { primary: '#000' }
               }
             : {
-                background: {
-                  default: '#121212'
-                }
+                background: { default: '#121212' },
+                text: { primary: '#fff' }
               })
         },
         typography: {
@@ -49,59 +47,66 @@ const Portfolio = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Container  sx={{ mt: 2, mb: 4 }}>
+      <Container sx={{ mt: 2, mb: 4 }}>
         {/* Header */}
-        <Box display="flex" flexDirection="row" justifyContent="space-between" alignItems="center" mb={4}>
-  <Box display="flex" flexDirection="row" alignItems="center" gap={2}>
-    <Typography variant="h6">
-      Lalith Ganesh Challa
-    </Typography>
-    <Typography variant="body2" color="text.secondary" mt={0.5}>
-      Frontend Developer
-    </Typography>
-  </Box>
-  <Box display="flex" flexDirection="row" alignItems="center" gap={2}>
-    <Link href="#resume" underline="hover" color='textPrimary'>Resume</Link>
-    <Typography>
-        |
-    </Typography>
-    <Link href="#research" underline="hover" color='textPrimary'>Research</Link>
-    <Typography>
-        |
-    </Typography>
-    <Link href="#outreach" underline="hover" color='textPrimary'>Outreach</Link>
-    <Typography>
-        |
-    </Typography>
-    <Link href="#personal" underline="hover" color='textPrimary'>Personal</Link>
-    <Switch
-      checked={mode === 'dark'}
-      onChange={handleThemeToggle}
-      inputProps={{ 'aria-label': 'theme toggle' }}
-    />
-  </Box>
-</Box>
-        <Box display="flex" flexDirection="row" justifyContent="center" textAlign="center" my={10} gap={2}>
-          <Box>
-            <Avatar
-            src={profileImage}
-            alt="Dalya Baron"
-            sx={{ width: 350, height: 350, mx: 'auto', mb: 2 }}
-          />
+        <Box
+          display="flex"
+          flexDirection={{ xs: 'column', sm: 'row' }}
+          justifyContent="space-between"
+          alignItems="center"
+          gap={2}
+          mb={4}
+        >
+          <Box display="flex" alignItems="center" gap={2}>
+            <Typography variant="h6">Lalith Ganesh Challa</Typography>
+            <Typography variant="body2" color="text.secondary">
+              Frontend Developer
+            </Typography>
           </Box>
-          <Box display="flex" flexDirection="column" mt={12} textAlign="left">
-            <Typography variant="h5" fontWeight="bold">
-            Lalith Ganesh Challa
-          </Typography>
-          <Typography variant="h6" fontWeight="bold" mt={1}>
-            A bit about me
-          </Typography>
-          <Typography variant="body1" color="text.secondary" maxWidth="sm" mx="auto" mt={1}>
-            I am a passionate frontend developer with a keen interest in creating intuitive and dynamic user interfaces.
-          </Typography>
+          <Box display="flex" alignItems="center" gap={2} flexWrap="wrap">
+            {['Resume', 'Research', 'Outreach', 'Personal'].map((item, index) => (
+              <React.Fragment key={item}>
+                {index !== 0 && <Typography>|</Typography>}
+                <Link href={`#${item.toLowerCase()}`} underline="hover" sx={{ color: 'text.primary' }}>
+                  {item}
+                </Link>
+              </React.Fragment>
+            ))}
+            <Switch
+              checked={mode === 'dark'}
+              onChange={handleThemeToggle}
+              inputProps={{ 'aria-label': 'theme toggle' }}
+            />
           </Box>
         </Box>
-                 <Grid container justifyContent="center" spacing={2} mt={4}>
+
+        {/* Main Section */}
+        <Grid container spacing={4} alignItems="center" justifyContent="center" textAlign="center" my={5}>
+          <Grid item xs={12} md={4}>
+            <Avatar
+              src={profileImage}
+              alt="Lalith Ganesh"
+              sx={{ width: 250, height: 250, mx: 'auto' }}
+            />
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Typography variant="h5" fontWeight="bold">
+              Lalith Ganesh Challa
+            </Typography>
+            <Typography variant="h6" fontWeight="bold" mt={2}>
+              A bit about me
+            </Typography>
+            <Box maxWidth="sm" mx="auto" mt={2}>
+              <Typography variant="body1" color="text.secondary">
+                I am a passionate frontend developer with a keen interest in creating intuitive and dynamic user interfaces.
+              </Typography>
+            </Box>
+          </Grid>
+        </Grid>
+
+        {/* Action Buttons */}
+        <Box mt={4}>
+          <Grid container justifyContent="center" spacing={3}>
             {[
               { label: 'Resume', color: '#b1f740' },
               { label: 'Research', color: '#f2a024' },
@@ -127,34 +132,48 @@ const Portfolio = () => {
               </Grid>
             ))}
           </Grid>
+        </Box>
+
         {/* Footer */}
-        <Divider sx={{ width:'100%', my: 4 }} />
-        <Grid container spacing={2} justifyContent="space-between">
-          <Grid item xs={12} sm={4}>
-            <Typography variant="body2">Email: {''} 
-                <Link href="https://mail.google.com/mail/u/0/#inbox?compose=CllgCJZcRfwTwwrHMhvdTFhpsCbnFcfJHbBqkPTqbGPjnXHBZkTbDDQPWVQHGNMxHNwZtmMfwxV" target="_blank" rel="noopener">
+        <Divider sx={{ my: 6 }} />
+        <Grid container spacing={3} justifyContent="center">
+          <Grid item xs={12} md={4}>
+            <Typography variant="body2" textAlign="center">
+              Email:{' '}
+              <Link
+                href="https://mail.google.com/mail/u/0/#inbox?compose=new"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 challalalithganesh@gmail.com
-                </Link>
+              </Link>
             </Typography>
           </Grid>
-          <Grid item xs={12} sm={4}>
-            <Typography variant="body2">
+          <Grid item xs={12} md={4}>
+            <Typography variant="body2" textAlign="center">
               GitHub:{' '}
-              <Link href="https://github.com/lalithganeshchalla" target="_blank" rel="noopener">
+              <Link
+                href="https://github.com/lalithganeshchalla"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 github.com/lalithganeshchalla
               </Link>
             </Typography>
           </Grid>
-          <Grid item xs={12} sm={4}>
-            <Typography variant="body2">
-              Linkedin:{' '}
-              <Link href="www.linkedin.com/in/challa-lalith-ganesh" target="_blank" rel="noopener">
-                linkedin.com/challa-lalith-ganesh
+          <Grid item xs={12} md={4}>
+            <Typography variant="body2" textAlign="center">
+              LinkedIn:{' '}
+              <Link
+                href="https://www.linkedin.com/in/challa-lalith-ganesh"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                linkedin.com/in/challa-lalith-ganesh
               </Link>
             </Typography>
           </Grid>
         </Grid>
-       
       </Container>
     </ThemeProvider>
   );
