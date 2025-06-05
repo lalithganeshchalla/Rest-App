@@ -63,7 +63,7 @@ const navLinks = [
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Container sx={{ mt: 2, mb: 4 }}>
+      <Container sx={{ mt: 2, mb:2 }}>
         {/* Header */}
         <Box
           display="flex"
