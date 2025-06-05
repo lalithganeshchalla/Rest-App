@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from 'react';
+import './Home.css';
 import {
   Avatar,
   Box,
@@ -71,7 +72,7 @@ const navLinks = [
           gap={2}
           mb={4}
         >
-          <Box display="flex" alignItems="center" gap={2}>
+          <Box display="flex" alignItems="center" gap={2} >
             <Typography variant="h6">Lalith Ganesh Challa</Typography>
             <Typography variant="body2" color="text.secondary">
               Frontend Developer
@@ -79,20 +80,20 @@ const navLinks = [
           </Box>
          <Box display="flex" alignItems="center" gap={2} flexWrap="wrap">
           {navLinks.map((item, index) => (
-        <React.Fragment key={item.label}>
+        <React.Fragment key={item.label}> 
         {index !== 0 && <Typography color="text.secondary">|</Typography>}
         <Link
          component={RouterLink}
          to={item.path}
         underline="none"
-        onClick={() => setActiveNav(item)}
+        onClick={() => setActiveNav(item.lable)}
         sx={{
-          color: activeNav === item ? 'primary.main' : 'text.primary',
+          color: activeNav === item.label ? 'primary.main' : 'text.primary',
           position: 'relative',
           '&::after': {
             content: '""',
             position: 'absolute',
-            width: activeNav === item ? '50%' : '0%',
+            width: activeNav === item.label ? '50%' : '0%',
             height: '2px',
             bottom: 0,
             left: '50%',

@@ -96,7 +96,7 @@ const Resume = () => {
         </Box>
 
         {/* Resume Display */}
-        <Box mt={4}>
+        <Box mt={4} flexWrap="wrap">
           <Typography variant="h5" gutterBottom>
             My Resume
           </Typography>
