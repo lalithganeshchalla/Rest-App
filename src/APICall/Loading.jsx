@@ -15,7 +15,7 @@ export default function Loading() {
         navigate('/users')
     }
      const onSubmit4 = () => {
-        navigate('/portfolio')
+        navigate('/home')
     }
   return (
     <Stack direction="row" spacing={2} justifyContent="center" alignItems="center" height="100vh">

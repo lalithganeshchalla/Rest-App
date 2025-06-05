@@ -6,7 +6,8 @@ import Loading from './APICall/Loading'
 import GetAPICall from './APICall/GetAPICall'
 import GetAPICall1 from './APICall/GetAPICall1'
 import Users from './useReducer/Users'
-import Portfolio from './portfolio/Portfolio'
+import Home from './portfolio/Home'
+import Resume from './portfolio/Resume'
 
 const App1 = () => {
   return (
@@ -18,7 +19,8 @@ const App1 = () => {
             <Route path="/fetchapi" element={<GetAPICall/>}/>
             <Route path="/axiosapi" element={<GetAPICall1/>}/>
             <Route path="/users" element={<Users/>}/>
-            <Route path="/portfolio" element={<Portfolio/>}/>
+            <Route path="/home" element={<Home/>}/>
+            <Route path="/resume" element={<Resume/>}/>
         </Routes>
     </Router>
   )

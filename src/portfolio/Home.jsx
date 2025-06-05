@@ -17,9 +17,13 @@ import profileImage from '../assets/my.jpg';
 import GoogleSvg from '../assets/google.svg';
 import GitHubSvg from '../assets/github.svg';
 import LinkedInSvg from '../assets/linkedin.svg';
+import { Link as RouterLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-const Portfolio = () => {
+const Home = () => {
+  const navigate = useNavigate();
   const [mode, setMode] = useState('light');
+  const [activeNav, setActiveNav] = useState('Home');
 
   const theme = useMemo(
     () =>
@@ -46,6 +50,13 @@ const Portfolio = () => {
   const handleThemeToggle = () => {
     setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
   };
+const navLinks = [
+  { label: 'Home', path: '/home' },
+  { label: 'Resume', path: '/resume' },
+  { label: 'Research', path: '/research' },
+  { label: 'Outreach', path: '/outreach' },
+  { label: 'Personal', path: '/personal' }
+];
 
   return (
     <ThemeProvider theme={theme}>
@@ -67,19 +78,21 @@ const Portfolio = () => {
             </Typography>
           </Box>
          <Box display="flex" alignItems="center" gap={2} flexWrap="wrap">
-  {['Home', 'Resume', 'Research', 'Outreach', 'Personal'].map((item, index) => (
-    <React.Fragment key={item}>
-      {index !== 0 && <Typography color="text.secondary">|</Typography>}
-      <Link
-        href={`#${item.toLowerCase()}`}
+          {navLinks.map((item, index) => (
+        <React.Fragment key={item.label}>
+        {index !== 0 && <Typography color="text.secondary">|</Typography>}
+        <Link
+         component={RouterLink}
+         to={item.path}
         underline="none"
+        onClick={() => setActiveNav(item)}
         sx={{
-          color: 'text.primary',
+          color: activeNav === item ? 'primary.main' : 'text.primary',
           position: 'relative',
           '&::after': {
             content: '""',
             position: 'absolute',
-            width: '0%',
+            width: activeNav === item ? '50%' : '0%',
             height: '2px',
             bottom: 0,
             left: '50%',
@@ -92,7 +105,7 @@ const Portfolio = () => {
           },
         }}
       >
-        {item}
+        {item.label}
       </Link>
     </React.Fragment>
   ))}
@@ -164,14 +177,15 @@ const Portfolio = () => {
         <Box mt={4}>
           <Grid container justifyContent="center" spacing={3}>
             {[
-              { label: 'Resume', color: '#b1f740' },
-              { label: 'Research', color: '#f2a024' },
+              { label: 'Resume', color: '#b1f740' , path: '/resume' },
+              { label: 'Research', color: '#f2a024', path: '/research' },
               { label: 'Outreach', color: '#24f2c2' },
               { label: 'Personal', color: '#b3bab8' }
             ].map((item, idx) => (
               <Grid item key={idx}>
                 <Button
                   variant="contained"
+                  onClick={() => navigate(item.path)}
                   sx={{
                     bgcolor: item.color,
                     color: '#000',
@@ -194,4 +208,4 @@ const Portfolio = () => {
   );
 };
 
-export default Portfolio;
+export default Home;
