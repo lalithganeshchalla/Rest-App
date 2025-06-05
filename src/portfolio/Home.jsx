@@ -20,6 +20,7 @@ import GitHubSvg from '../assets/github.svg';
 import LinkedInSvg from '../assets/linkedin.svg';
 import { Link as RouterLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import logoImage from '../assets/apple-touch-icon.png';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -73,6 +74,8 @@ const navLinks = [
           mb={4}
         >
           <Box display="flex" alignItems="center" gap={2} >
+
+            <img src={logoImage} alt="Profile" style={{ width: '50px', height: '50px', borderRadius: '50%' }} />
             <Typography variant="h6">Lalith Ganesh Challa</Typography>
             <Typography variant="body2" color="text.secondary">
               Frontend Developer
