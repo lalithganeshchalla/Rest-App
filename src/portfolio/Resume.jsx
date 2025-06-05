@@ -61,7 +61,7 @@ const Resume = () => {
                 {index !== 0 && <Typography color="text.secondary">|</Typography>}
                 <Link
                   component={RouterLink}
-                  to={`/${item.toLowerCase() === 'home' ? '' : item.toLowerCase()}`}
+                  to={`/${item.toLowerCase()}`}
                   underline="none"
                   onClick={() => setActiveNav(item)}
                   sx={{
