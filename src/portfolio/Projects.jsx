@@ -12,7 +12,7 @@ import {
 import { Link as RouterLink } from 'react-router-dom';
 import logoImage from '../assets/apple-touch-icon.png';
 
-const Resume = () => {
+const Projects = () => {
   const [mode, setMode] = useState('light');
   const [activeNav, setActiveNav] = useState('Resume');
 
@@ -96,21 +96,10 @@ const Resume = () => {
             />
           </Box>
         </Box>
-        <Box mt={4} flexWrap="wrap">
-          <Typography variant="h5" gutterBottom>
-            My Resume
-          </Typography>
-          <iframe
-            src="/resume.pdf"
-            title="Resume"
-            width="100%"
-            height="800px"
-            style={{ border: 'none' }}
-          />
-        </Box>
+        
       </Container>
     </ThemeProvider>
   );
 };
 
-export default Resume;
+export default Projects;

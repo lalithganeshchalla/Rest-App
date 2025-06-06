@@ -55,7 +55,7 @@ const Home = () => {
 const navLinks = [
   { label: 'Home', path: '/home' },
   { label: 'Resume', path: '/resume' },
-  { label: 'Research', path: '/research' },
+  { label: 'Projects', path: '/projects' },
   { label: 'Outreach', path: '/outreach' },
   { label: 'Personal', path: '/personal' }
 ];
@@ -73,7 +73,7 @@ const navLinks = [
           gap={2}
           mb={4}
         >
-          <Box display="flex" alignItems="center" gap={2} >
+          <Box display="flex" flexDirection={{ xs: 'column', sm: 'row' }} justifyContent='space-between' alignItems="center" gap={2} >
 
             <img src={logoImage} alt="Profile" style={{ width: '50px', height: '50px', borderRadius: '50%' }} />
             <Typography variant="h6">Lalith Ganesh Challa</Typography>
@@ -81,7 +81,7 @@ const navLinks = [
               Frontend Developer
             </Typography>
           </Box>
-         <Box display="flex" alignItems="center" gap={2} flexWrap="wrap">
+         <Box display="flex" flexDirection={{ xs: 'column', sm: 'row' }} justifyContent='space-between' alignItems="center" gap={2} flexWrap="wrap">
           {navLinks.map((item, index) => (
         <React.Fragment key={item.label}> 
         {index !== 0 && <Typography color="text.secondary">|</Typography>}
