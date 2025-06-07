@@ -1,14 +1,13 @@
 import React, { useMemo, useState } from 'react';
-import { Divider, IconButton} from '@mui/material';
+import { IconButton } from '@mui/material';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
-import './Home.css';
 import {
   Box,
   Container,
   CssBaseline,
   Link,
-  // Switch,
+//   Switch,
   Typography,
   createTheme,
   ThemeProvider
@@ -16,9 +15,9 @@ import {
 import { Link as RouterLink } from 'react-router-dom';
 import logoImage from '../assets/apple-touch-icon.png';
 
-const Resume = () => {
+const ContactUs = () => {
   const [mode, setMode] = useState('light');
-  const [activeNav, setActiveNav] = useState('Resume');
+  const [activeNav, setActiveNav] = useState('Contact Us');
 
   const theme = useMemo(
     () =>
@@ -50,7 +49,7 @@ const Resume = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Container maxWidth="xl" disableGutters sx={{ mt: 2, mb: 4 }}>
+      <Container sx={{ mt: 2, mb: 4 }}>
         {/* Header */}
         <Box
           display="flex"
@@ -58,17 +57,18 @@ const Resume = () => {
           justifyContent="space-between"
           alignItems="center"
           gap={2}
-          mb={2}
+          mb={4}
+          flexWrap="wrap"
         >
-          <Box display="flex" alignItems="center" gap={2} sx={{ml: 2}}>
+          <Box display="flex" alignItems="center" gap={2} flexWrap="wrap">
             <img src={logoImage} alt="Profile" style={{ width: '50px', height: '50px', borderRadius: '50%' }} />
-            <Typography variant="h6">Lalith Ganesh Challa</Typography>
-            <Typography variant="body2" color="text.secondary">
-              Frontend Developer
-            </Typography>
+              <Typography variant="h6">Lalith Ganesh Challa</Typography>
+              <Typography variant="body2" color="text.secondary">
+                Frontend Developer
+              </Typography>
           </Box>
 
-          <Box display="flex" alignItems="center" gap={2} flexWrap="wrap">
+          <Box display="flex" alignItems="center" gap={2} flexWrap="wrap" mt={{ xs: 2, sm: 0 }}>
             {navLinks.map((item, index) => (
               <React.Fragment key={item.label}>
                 {index !== 0 && <Typography color="text.secondary">|</Typography>}
@@ -105,33 +105,35 @@ const Resume = () => {
               onChange={handleThemeToggle}
               inputProps={{ 'aria-label': 'theme toggle' }}
             /> */}
-            <IconButton onClick={handleThemeToggle} color="inherit" aria-label="Toggle theme" sx={{ mr: 2 }}>
-      {mode === 'dark' ? (
-        <DarkModeIcon sx={{ color: '#fff' }} /> // Yellow moon in dark mode
-      ) : (
-        <LightModeIcon sx={{ color: '#FFC107' }} /> // Blue sun in light mode
-      )}
-    </IconButton>
+            <IconButton onClick={handleThemeToggle} color="inherit" aria-label="Toggle theme">
+                  {mode === 'dark' ? (
+                    <DarkModeIcon sx={{ color: '#fff' }} /> // Yellow moon in dark mode
+                  ) : (
+                    <LightModeIcon sx={{ color: '#FFC107' }} /> // Blue sun in light mode
+                  )}
+                </IconButton>
           </Box>
-         
-          
         </Box>
-        <Divider />
-        <Box mt={4} flexWrap="wrap" sx={{mr: 4,ml: 4}}>
-          <Typography variant="h5" gutterBottom>
-            My Resume
-          </Typography>
-          <iframe
-            src="/resume.pdf"
-            title="Resume"
-            width="100%"
-            height="800px"
-            style={{ border: 'none' }}
-          />
+
+        {/* Resume Embed */}
+        <Box mt={4}>
+         
+
+          <Box
+            sx={{
+              width: '100%',
+              height: { xs: '80vh', md: '800px' },
+              border: 'none',
+              overflow: 'hidden'
+            }}
+          >
+           
+
+          </Box>
         </Box>
       </Container>
     </ThemeProvider>
   );
 };
 
-export default Resume;
+export default ContactUs;

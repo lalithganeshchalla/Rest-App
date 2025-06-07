@@ -9,6 +9,8 @@ import Users from './useReducer/Users'
 import Home from './portfolio/Home'
 import Resume from './portfolio/Resume'
 import Projects from './portfolio/Projects'
+import Tools from './portfolio/Tools'
+import ContactUs from './portfolio/ContactUs'
 
 const App1 = () => {
   return (
@@ -23,6 +25,8 @@ const App1 = () => {
             <Route path="/home" element={<Home/>}/>
             <Route path="/resume" element={<Resume/>}/>
             <Route path="/projects" element={<Projects/>}/>
+            <Route path="/tools" element={<Tools/>}/>
+            <Route path="/contactus" element={<ContactUs/>}/>
         </Routes>
     </Router>
   )
