@@ -18,7 +18,12 @@ export default function Loading() {
         navigate('/home')
     }
   return (
-    <Stack direction="row" spacing={2} justifyContent="center" alignItems="center" height="100vh">
+    <Stack display="flex"
+          flexDirection={{ xs: 'column', sm: 'row' }}
+          justifyContent="space-around"
+          alignItems="center" 
+          height="100vh">
+          
         <h1>Click on Button View the API</h1>
       <Button variant="contained" color="success" onClick={onSubmit1}>
         FETCH
