@@ -20,21 +20,21 @@ export default function Loading() {
   return (
     <Stack display="flex"
           flexDirection={{ xs: 'column', sm: 'row' }}
-          justifyContent="space-around"
+          padding={3}
           alignItems="center" 
           height="100vh">
           
-        <h1>Click on Button View the API</h1>
-      <Button variant="contained" color="success" onClick={onSubmit1}>
-        FETCH
+        <h1 style={{fontSize:'24px'}}>Click on Button View the API</h1>
+      <Button variant="contained" color="success" onClick={onSubmit1} sx={{mb:3}}>
+        FETCH  
       </Button>
-      <Button variant="contained" color="success" onClick={onSubmit2}>
+      <Button variant="contained" color="success" onClick={onSubmit2} sx={{mb:3}}>
         AXIOS
       </Button>
-      <Button variant="contained" color="success" onClick={onSubmit3}>
+      <Button variant="contained" color="success" onClick={onSubmit3} sx={{mb:3}}>
         useReducer
       </Button>
-      <Button variant="contained" color="success" onClick={onSubmit4}>
+      <Button variant="contained" color="success" onClick={onSubmit4} sx={{mb:3}}>
         Portfolio
       </Button>
     </Stack>
